@@ -1,25 +1,29 @@
 const myLibrary = [];
 
-function Book({ title, author, pages, readStatus }) {
-  this.title = title; // string
-  this.author = author; // string
-  this.pages = pages; // number
-  this.readStatus = readStatus; // string -> 'finished reading', 'not read yet', 'reading'
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-  };
-  return this;
-}
 
-Book.prototype.toggleReadStatus = function() {
-  if (this.readStatus === 'reading') {
-    this.readStatus = 'finished reading';
-  } else if (this.readStatus === 'finished reading') {
-    this.readStatus = 'not yet read';
-  } else {
-    this.readStatus = 'reading';
+
+class Book {
+  constructor({ title, author, pages, readStatus }) {
+    this.title = title; // string
+    this.author = author; // string
+    this.pages = pages; // number
+    this.readStatus = readStatus; // string -> 'finished reading', 'not read yet', 'reading'
   }
-};
+
+  info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+  }
+
+  toggleReadStatus() {
+    if (this.readStatus === 'reading') {
+      this.readStatus = 'finished reading';
+    } else if (this.readStatus === 'finished reading') {
+      this.readStatus = 'not yet read';
+    } else {
+      this.readStatus = 'reading';
+    }
+  }
+}
 
 // Add some books to the library
 const book1 = {
